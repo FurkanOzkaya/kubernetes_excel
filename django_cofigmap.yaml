@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: django-configs
+data:
+  django_secret_key: TXTJRT354/\random/reaea2A54d
+  django_static_url: "/static/"
