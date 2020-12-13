@@ -45,6 +45,16 @@ spec:
             configMapKeyRef:
               name: postgresql-configmap
               key: database_port
+        - name: SECRET_KEY
+          valueFrom:
+            configMapKeyRef:
+              name: django-configs
+              key: django_secret_key
+        - name: STATIC_URL
+          valueFrom:
+            configMapKeyRef:
+              name: django-configs
+              key: django_static_url
 ---
 apiVersion: v1
 kind: Service

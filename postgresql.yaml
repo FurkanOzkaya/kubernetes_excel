@@ -15,26 +15,33 @@ spec:
         app: postgres
     spec:
       containers:
-      - name: postgres
-        image: postgres
-        ports:
-        - containerPort: 5432
-        env:
-        - name: POSTGRES_USER
-          valueFrom:
-            secretKeyRef:
-              name: postgresql-secret
-              key: postgresql-root-username
-        - name: POSTGRES_PASSWORD
-          valueFrom: 
-            secretKeyRef:
-              name: postgresql-secret
-              key: postgresql-root-password
-        - name: POSTGRES_DB
-          valueFrom: 
-            configMapKeyRef:
-              name: postgresql-configmap
-              key: database_name
+        - name: postgres
+          image: postgres
+          ports:
+          - containerPort: 5432
+          env:
+          - name: POSTGRES_USER
+            valueFrom:
+              secretKeyRef:
+                name: postgresql-secret
+                key: postgresql-root-username
+          - name: POSTGRES_PASSWORD
+            valueFrom: 
+              secretKeyRef:
+                name: postgresql-secret
+                key: postgresql-root-password
+          - name: POSTGRES_DB
+            valueFrom: 
+              configMapKeyRef:
+                name: postgresql-configmap
+                key: database_name
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgres-pv-claim
+      volumes:
+        - name: postgres-pv-claim
+          persistentVolumeClaim:
+            claimName: postgres-pv-claim
 ---
 apiVersion: v1
 kind: Service
