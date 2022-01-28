@@ -12,7 +12,7 @@ Easy deployment For excel app.
 
 2.) Click start.sh.
 
-3.) you can reach app with localhost:8080.
+3.) you can reach app with localhost:30000.
 
 ### Note:
 

@@ -63,7 +63,7 @@ metadata:
 spec:
   selector:
     app: backenddeployment
-  type: LoadBalancer  
+  type: NodePort  
   ports:
     - protocol: TCP
       port: 9000
